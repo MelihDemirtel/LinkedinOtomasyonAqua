@@ -1,18 +1,14 @@
 package com.example.linkedinprojectsaqua;
 
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.testng.annotations.*;
 
-import static org.testng.Assert.*;
-
-import static com.codeborne.selenide.Condition.attribute;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 public class MainPageTest {
+    public int milis = 2000;
     MainPage mainPage = new MainPage();
 
     @BeforeClass
@@ -23,33 +19,28 @@ public class MainPageTest {
 
     @BeforeMethod
     public void setUp() {
-        open("https://www.jetbrains.com/");
+        open("https://demoqa.com");
     }
 
     @Test
-    public void search() {
-        mainPage.searchButton.click();
+    public void homePage() {
+        System.out.println("Sayfa Title: "+title());//Açık sayfanın ismini verir
+        System.out.println("Açık Sayfa URL'i: "+webdriver().driver().url());//Açık sayfanın url'ini verir
 
-        $("[data-test='search-input']").sendKeys("Selenium");
-        $("button[data-test='full-search-button']").click();
+        System.out.println("Açık Sayfanın Hash Code'u: "+webdriver().driver().hashCode());//Açık Sayfanın Hash Code'unu verir
 
-        $("input[data-test='search-input']").shouldHave(attribute("value", "Selenium"));
+        System.out.println("=================================");
+        System.out.println("Kaynak Kod: "+webdriver().driver().source());//Sayfanın kaynak kodunu verir.
+        System.out.println("=================================");
     }
-
     @Test
-    public void toolsMenu() {
-        mainPage.toolsMenu.click();
-
-        $("div[data-test='main-submenu']").shouldBe(visible);
+    public void elements() {
+        mainPage.elementsButton.click();
+        sleep(milis);
     }
-
     @Test
-    public void navigationToAllTools() {
-        mainPage.seeDeveloperToolsButton.click();
-        mainPage.findYourToolsButton.click();
-
-        $("#products-page").shouldBe(visible);
-
-        assertEquals(Selenide.title(), "All Developer Tools and Products by JetBrains");
+    public void forms() {
+        mainPage.formsButton.click();
+        sleep(milis);
     }
 }
