@@ -10,6 +10,4 @@ public class MainPage {
     public SelenideElement elementsButton = $x("(//div[@class='card mt-4 top-card'])[1]");
 
     public SelenideElement formsButton = $x("(//div[@class='card mt-4 top-card'])[2]");
-
-
 }

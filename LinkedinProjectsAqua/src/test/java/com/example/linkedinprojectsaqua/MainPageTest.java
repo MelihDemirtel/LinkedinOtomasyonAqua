@@ -9,6 +9,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class MainPageTest {
     public int milis = 2000;
+    public String scrollDown = "window.scrollBy(0,350)";
     MainPage mainPage = new MainPage();
 
     @BeforeClass
@@ -21,6 +22,9 @@ public class MainPageTest {
     public void setUp() {
         open("https://demoqa.com");
     }
+
+    @AfterClass
+    public void tearDown(){ closeWebDriver();}
 
     @Test
     public void homePage() {
@@ -35,12 +39,14 @@ public class MainPageTest {
     }
     @Test
     public void elements() {
-        mainPage.elementsButton.click();
+        executeJavaScript(scrollDown);
         sleep(milis);
+        mainPage.elementsButton.click();
     }
     @Test
     public void forms() {
-        mainPage.formsButton.click();
+        executeJavaScript(scrollDown);
         sleep(milis);
+        mainPage.formsButton.click();
     }
 }
