@@ -8,11 +8,14 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static com.codeborne.selenide.Selenide.closeWebDriver;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Locators {
     public int milis = 2000;
+    public String scrollDown = "window.scrollBy(0,350)";//Sayfayı aşağı kaydırabilmek için
+
+    LocatorsPage locatorsPage = new LocatorsPage();
+
     @BeforeClass
     public static void setUpAll() {
         Configuration.browserSize = "1296x696";
@@ -21,7 +24,7 @@ public class Locators {
 
     @BeforeMethod
     public void setUp() throws InterruptedException {
-        open("https://demoqa.com");
+        open("https://demoqa.com/login");
         Thread.sleep(milis);
     }
 
@@ -29,7 +32,20 @@ public class Locators {
     public void tearDown(){ closeWebDriver();}
 
     @Test
-    public void navigatePage() throws InterruptedException {
-        open("https://demoqa.com/elements");
+    public void LocatorsPage() throws InterruptedException {
+        executeJavaScript(scrollDown);//Sayfa aşağı kaydırılır
+
+        locatorsPage.userNameLabel.sendKeys("NewUser");//Kullanıcı adı girilir
+        Thread.sleep(milis);
+        locatorsPage.userNameLabelCss.sendKeys("One");//Kullanıcı adı girilir.
+        Thread.sleep(milis);
+        locatorsPage.passwordLabel.sendKeys("123456");//Şifre girilir
+        Thread.sleep(milis);
+        locatorsPage.loginButton.click();//Kayıt ol butonuna tıklanır
+        Thread.sleep(milis);
+        locatorsPage.errorMessage.isDisplayed();//Hata mesajı görüldü mü kontrol edilir
+        Thread.sleep(milis);
+        locatorsPage.newUserButton.click();//Yeni kullanıcı butonuna tıklanır
+        Thread.sleep(milis);
     }
 }
