@@ -1,16 +1,18 @@
-package com.example.linkedinprojectsaqua;
+package elementsExamples;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.open;
 
-
-public class MainPageTest {
-    MainPage mainPage = new MainPage();
-
+public class CheckBox {
+   CheckBoxPage checkBoxPage = new CheckBoxPage();
     @BeforeClass
     public static void setUpAll() {
         Configuration.browserSize = "1920x1080";
@@ -29,12 +31,6 @@ public class MainPageTest {
 
     @Test
     public void homePage() {
-        System.out.println("Sayfa Başlığı :" + title() );
-        System.out.println("Sayfa URl :" + webdriver().driver().url());
-
-        System.out.println("Hash Code: " + webdriver().driver().hashCode());
-
-        System.out.println("Kaynak Kod: " + webdriver().driver().source());
 
     }
 }
