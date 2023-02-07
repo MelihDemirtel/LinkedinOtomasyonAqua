@@ -1,8 +1,10 @@
 package elementsExamples;
 
-import com.codeborne.selenide.*;
+import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
-import java.net.HttpURLConnection;
+
+;import java.net.HttpURLConnection;
 import java.util.Iterator;
 import java.util.Set;
 
