@@ -38,22 +38,24 @@ public class Links {
         linksElements.linksButton.click();
     }
     @Test
-    public void test03() throws InterruptedException {
+    public void test03() throws InterruptedException{
         linksElements.homeLink.click();
         linksElements.windows = Selenide.webdriver().object().getWindowHandles();
         linksElements.window = linksElements.windows.iterator();
         linksElements.parentId = linksElements.window.next();
         linksElements.childIdOne = linksElements.window.next();
         Selenide.switchTo().window(linksElements.childIdOne);
-        linksElements.elementsButton.shouldHave(Condition.visible).wait(5000);
+        linksElements.elementsButton.shouldHave(Condition.visible);
         closeWindow();
         Selenide.switchTo().window(linksElements.parentId);
+        Thread.sleep(1000);
     }
     @Test
-    public void test04() {
-        for (int i = 4; i < linksElements.links.size(); i++) {
+    public void test04() throws InterruptedException {
+        for (int i = 2; i < linksElements.links.size(); i++) {
             linksElements.url = linksElements.links.get(i).getAttribute("href");
             linksElements.urlText = linksElements.links.get(i).getText();
+            Thread.sleep(250);
             try {
                 linksElements.connection = (HttpURLConnection) new URL(linksElements.url).openConnection();
                 linksElements.connection.setRequestMethod("HEAD");
