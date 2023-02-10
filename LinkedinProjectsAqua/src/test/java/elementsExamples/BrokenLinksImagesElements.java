@@ -13,6 +13,10 @@ public class BrokenLinksImagesElements {
     //ELEMENTS
     public SelenideElement elementsButton = $x("//h5[text()='Elements']");
     public SelenideElement brokenLinksButton = $x("//span[@class='text' and contains(text(),'Broken')]");
+    public String url;
+    public String urlText;
+    public String imageUrl;
+    public String imageUrlText;
 
     //OTHER
     public ElementsCollection images = $$(By.tagName("img"));
@@ -21,5 +25,5 @@ public class BrokenLinksImagesElements {
     //HTTP
     public HttpURLConnection connection;
     public int responseCodeImg;
-    public int getResponseCodeLink;
+    public int responseCodeLink;
 }
