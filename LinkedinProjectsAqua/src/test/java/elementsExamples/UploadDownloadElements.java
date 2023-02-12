@@ -17,9 +17,10 @@ public class UploadDownloadElements {
     public SelenideElement uploadedFileName = $(By.id("uploadedFilePath"));
 
     //OTHER
+    public int milis = 1000;
     public File file;
-    public String downloadUrl;
-    public String downloadedFilePath = "C:\\Users\\ext02d47194\\Downloads\\";
+    public String downloadedFileName;
+    public String actualDownloadedFileName = "sampleFile.jpeg";
     public String actualFileName;
     public String expectedFileName = "C:\\fakepath\\sampleFile.txt";
 

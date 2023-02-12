@@ -15,13 +15,13 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
 
 public class UploadDownload {
-    static int milis = 2000;
     UploadDownloadElements elements = new UploadDownloadElements();
     SoftAssert softAssert = new SoftAssert();
     @BeforeClass
     public static void SetUpAll() {
-        Configuration.browserSize = "1920x1080";
+        Configuration.browserSize = "1910x1020";
         Configuration.timeout = 20000;
+        Configuration.downloadsFolder = "C:\\Users\\ext02d47194\\Downloads\\";
         SelenideLogger.addListener("allure", new AllureSelenide());
 
         open("https://demoqa.com");
@@ -40,24 +40,24 @@ public class UploadDownload {
     }
     @Test
     public void test03() throws InterruptedException {
-        elements.downloadUrl = elements.downloadButton.getAttribute("href");
+        elements.downloadedFileName = elements.downloadButton.getAttribute("download");
         elements.downloadButton.click();
-        Thread.sleep(milis);
-        elements.file = new File(elements.downloadedFilePath + "sampleFile.jpeg");
-        Thread.sleep(milis);
-        if (elements.file.exists()) {
-            softAssert.assertEquals(elements.file.getName(), "sampleFile.jpeg");
-            System.out.println("İndirilen Dosya Adı: " + elements.file.getName());
+        Thread.sleep(elements.milis);
+        elements.file = new File(elements.downloadedFileName);
+        Thread.sleep(elements.milis);
+        if (elements.file.getName() == elements.actualDownloadedFileName) {
             System.out.println("Dosya indirme işlemi başarılıdır");
+            System.out.println("İndirilen Dosya Adı: " + elements.file.getName());
         } else {
-            System.out.println("Dosya indirme işlemi başarısızdır");
+            System.out.println("Dosya adı hatalıdır");
+            System.out.println("İndirilen Dosya Adı: " + elements.file.getName());
         }
         elements.file.delete();
     }
     @Test
     public void test04() throws InterruptedException {
         elements.uploadButton.sendKeys("C:\\Users\\ext02d47194\\Downloads\\sampleFile.txt");
-        Thread.sleep(milis);
+        Thread.sleep(elements.milis);
         elements.uploadedFileName.shouldHave(Condition.visible);
         elements.actualFileName = elements.uploadedFileName.getText();
         softAssert.assertEquals(elements.actualFileName, elements.expectedFileName);
