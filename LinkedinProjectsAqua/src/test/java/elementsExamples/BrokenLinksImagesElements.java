@@ -1,5 +1,6 @@
 package elementsExamples;
 
+
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
@@ -13,12 +14,6 @@ public class BrokenLinksImagesElements {
     //ELEMENTS
     public SelenideElement elementsButton = $x("//h5[text()='Elements']");
     public SelenideElement brokenLinksButton = $x("//span[@class='text' and contains(text(),'Broken')]");
-    public String url;
-    public String urlText;
-    public String imageUrl;
-    public String imageUrlText;
-
-    //OTHER
     public ElementsCollection images = $$(By.tagName("img"));
     public ElementsCollection links = $$(By.tagName("a"));
 
@@ -26,4 +21,10 @@ public class BrokenLinksImagesElements {
     public HttpURLConnection connection;
     public int responseCodeImg;
     public int responseCodeLink;
+
+    //OTHER
+    public String url;
+    public String urlText;
+    public String imageUrl;
+    public String imageUrlText;
 }

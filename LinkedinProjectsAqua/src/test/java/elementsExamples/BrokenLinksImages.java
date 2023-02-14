@@ -20,7 +20,7 @@ public class BrokenLinksImages {
     SoftAssert softAssert = new SoftAssert();
     @BeforeClass
     public static void SetUpAll() {
-        Configuration.browserSize = "1920x1080";
+        Configuration.browserSize = "1920x1040";
         Configuration.timeout = 20000;
         SelenideLogger.addListener("allure", new AllureSelenide());
 
@@ -41,45 +41,45 @@ public class BrokenLinksImages {
     @Test
     public void test03() {
         for (int i = 2; i < brokenElements.images.size(); i++){
-            brokenElements.imageUrl = brokenElements.images.get(i).getAttribute("src");
+            brokenElements.imageUrl = brokenElements.images.get(i).getAttribute("img");
             brokenElements.imageUrlText = brokenElements.images.get(i).getText();
-            try {
+            try{
                 brokenElements.connection = (HttpURLConnection) new URL(brokenElements.imageUrl).openConnection();
                 brokenElements.connection.setRequestMethod("HEAD");
                 brokenElements.connection.connect();
                 brokenElements.responseCodeImg = brokenElements.connection.getResponseCode();
+
                 if (brokenElements.responseCodeImg == 200){
-                    System.out.println("IMG IS VALID " + brokenElements.imageUrl + " | " + "Response Code: " + brokenElements.responseCodeImg + " | " + "URL Text: " + brokenElements.imageUrlText);
-                }else {
+                    System.out.println("IMG IS VALID " + brokenElements.imageUrl + " | " + "Returned Response Code: " + brokenElements.responseCodeImg + " | " + "URL Text: " + brokenElements.imageUrlText);
+                }else{
                     softAssert.assertTrue(brokenElements.responseCodeImg > 200);
-                    System.out.println("IMG IS BROKEN " + brokenElements.imageUrl + " | " + "Response Code: " + brokenElements.responseCodeImg + " | " + "URL Text: " + brokenElements.imageUrlText);
+                    System.out.println("IMG IS BROKEN " + brokenElements.imageUrl + " | " + "Returned Response Code: " + brokenElements.responseCodeImg + " | " + "URL Text: " + brokenElements.imageUrlText);
                 }
             }catch (IOException e){
-                System.out.println("Error URL: " + brokenElements.imageUrl + " | " + "Response Code: " + brokenElements.responseCodeImg + " | " + "URL Text: " + brokenElements.imageUrlText);
+                System.out.println("ERROR URL " + brokenElements.imageUrl + " | " + "Returned Response Code: " + brokenElements.responseCodeImg + " | " + "URL Text: " + brokenElements.imageUrlText);
             }
-        }
+        }softAssert.assertAll();
     }
     @Test
     public void test04() {
         for (int i = 2; i < brokenElements.links.size(); i++){
             brokenElements.url = brokenElements.links.get(i).getAttribute("href");
             brokenElements.urlText = brokenElements.links.get(i).getText();
-            try {
+            try{
                 brokenElements.connection = (HttpURLConnection) new URL(brokenElements.url).openConnection();
                 brokenElements.connection.setRequestMethod("HEAD");
                 brokenElements.connection.connect();
                 brokenElements.responseCodeLink = brokenElements.connection.getResponseCode();
+
                 if (brokenElements.responseCodeLink == 301){
-                    System.out.println("LINK IS VALID: " + brokenElements.url + " | " + "Response Code: " + brokenElements.responseCodeLink + " | " + "URL Text: " + brokenElements.urlText);
-                }else {
+                    System.out.println("LINK IS VALID " + brokenElements.url + " | " + "Returned Response Code: " + brokenElements.responseCodeLink + " | " + "URL Text: " + brokenElements.urlText);
+                }else{
                     softAssert.assertTrue(brokenElements.responseCodeLink > 301);
-                    System.out.println("LINK IS BROKEN: " + brokenElements.url + " | " + "Response Code: " + brokenElements.responseCodeLink + " | " + "URL Text: " + brokenElements.urlText);
+                    System.out.println("LINK IS BROKEN " + brokenElements.url + " | " + "Returned Response Code: " + brokenElements.responseCodeLink + " | " + "URL Text: " + brokenElements.urlText);
                 }
             }catch (IOException e){
-                System.out.println("Error URL: " + brokenElements.url + " | " + "Response Code: " + brokenElements.responseCodeLink + " | " + "URL Text: " + brokenElements.urlText);
+                System.out.println("ERROR URL " + brokenElements.url + " | " + "Returned Response Code: " + brokenElements.responseCodeLink + " | " + "URL Text: " + brokenElements.urlText);
             }
-        }
-
+        }softAssert.assertAll();
     }
-
-    }
+   }
