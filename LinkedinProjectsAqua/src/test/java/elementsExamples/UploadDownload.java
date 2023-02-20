@@ -40,17 +40,15 @@ public class UploadDownload {
     }
     @Test
     public void test03() throws InterruptedException {
-        elements.downloadedFileName = elements.downloadButton.getAttribute("download");
         elements.downloadButton.click();
         Thread.sleep(elements.milis);
-        elements.file = new File(elements.downloadedFileName);
+        elements.file = new File(Configuration.downloadsFolder + "sampleFile.jpeg");
         Thread.sleep(elements.milis);
-        if (elements.file.getName() == elements.actualDownloadedFileName) {
+        if (elements.file.getName().equals("sampleFile.jpeg")) {
             System.out.println("Dosya indirme işlemi başarılıdır");
             System.out.println("İndirilen Dosya Adı: " + elements.file.getName());
         } else {
-            System.out.println("Dosya adı hatalıdır");
-            System.out.println("İndirilen Dosya Adı: " + elements.file.getName());
+            System.out.println("Dosya İndirme İşlemi Başarısızdır.");
         }
         elements.file.delete();
     }

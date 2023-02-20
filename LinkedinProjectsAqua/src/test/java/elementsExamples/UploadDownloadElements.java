@@ -19,8 +19,6 @@ public class UploadDownloadElements {
     //OTHER
     public int milis = 1000;
     public File file;
-    public String downloadedFileName;
-    public String actualDownloadedFileName = "sampleFile.jpeg";
     public String actualFileName;
     public String expectedFileName = "C:\\fakepath\\sampleFile.txt";
 
