@@ -44,11 +44,11 @@ public class UploadDownload {
         Thread.sleep(elements.milis);
         elements.file = new File(Configuration.downloadsFolder + "sampleFile.jpeg");
         Thread.sleep(elements.milis);
-        if (elements.file.getName().equals("sampleFile.jpeg")) {
-            System.out.println("Dosya indirme işlemi başarılıdır");
+        if (elements.file.getName().equals("sampleFile.jpeg")){
+            System.out.println("Dosya İndirme Başarılıdır.");
             System.out.println("İndirilen Dosya Adı: " + elements.file.getName());
-        } else {
-            System.out.println("Dosya İndirme İşlemi Başarısızdır.");
+        }else{
+            System.out.println("Dosya İndirme Başarısızdır..");
         }
         elements.file.delete();
     }
@@ -56,9 +56,15 @@ public class UploadDownload {
     public void test04() throws InterruptedException {
         elements.uploadButton.sendKeys("C:\\Users\\ext02d47194\\Downloads\\sampleFile.txt");
         Thread.sleep(elements.milis);
-        elements.uploadedFileName.shouldHave(Condition.visible);
-        elements.actualFileName = elements.uploadedFileName.getText();
-        softAssert.assertEquals(elements.actualFileName, elements.expectedFileName);
+        elements.uploadFilePath.shouldHave(Condition.visible);
+        elements.actualFilePath = elements.uploadFilePath.getText();
+        softAssert.assertEquals(elements.actualFilePath, elements.expectedFilePath);
+        softAssert.assertAll();
     }
-
     }
+    /*
+Dosya sistemi üzerinde bir dosyayı ya da dizini temsil eden bir File nesnesi oluşturacağız.
+File sınıfı, dosya ve dizin işlemlerini gerçekleştirmek için kullanılır.
+Bu nesne üzerinden, dosya adı, boyutu, yaratılma tarihi, son değiştirilme tarihi gibi dosya özelliklerine erişilebilir.
+Ayrıca dosyaları kopyalama, silme, taşıma, ad değiştirme gibi işlemler de yapılabilir.
+     */

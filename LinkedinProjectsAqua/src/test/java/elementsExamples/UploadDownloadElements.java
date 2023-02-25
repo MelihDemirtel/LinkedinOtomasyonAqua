@@ -14,13 +14,14 @@ public class UploadDownloadElements {
     public SelenideElement upDwnButton = $x("//span[text()='Upload and Download']");
     public SelenideElement downloadButton = $(By.id("downloadButton"));
     public SelenideElement uploadButton = $(By.id("uploadFile"));
-    public SelenideElement uploadedFileName = $(By.id("uploadedFilePath"));
+    public SelenideElement uploadFilePath = $(By.id("uploadedFilePath"));
 
     //OTHER
-    public int milis = 1000;
     public File file;
-    public String actualFileName;
-    public String expectedFileName = "C:\\fakepath\\sampleFile.txt";
+    public int milis = 1000;
+    public String actualFilePath;
+    public String expectedFilePath = "C:\\fakepath\\sampleFile.txt";
+
 
 
 }
