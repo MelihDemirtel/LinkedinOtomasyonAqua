@@ -11,20 +11,19 @@ public class DynamicPropertiesElements {
     public SelenideElement elementsButton = $x("//h5[text()='Elements']");
     public SelenideElement dynamicPropertiesButton = $x("//span[text()='Dynamic Properties']");
     public SelenideElement firstRandomIdText;
-    public SelenideElement SecondRandomIdText;
+    public SelenideElement secondRandomIdText;
     public SelenideElement enableButton = $(By.id("enableAfter"));
     public SelenideElement colorButton = $(By.id("colorChange"));
     public SelenideElement visibleButton = $(By.id("visibleAfter"));
 
     //OTHER
     public int milis = 6000;
-    public String scrollDown = "window.scrollBy(0,350)";//Sayfayı aşağı kaydırabilmek için
-    public String firstRandomIdAttribute;
-    public String secondRandomIdAttribute;
-    public boolean enableButtonIsEnable;
-    public String firstColorButtonAttribute;
-    public String secondColorButtonAttribute;
-    public boolean visibleButtonIsVisible;
-
+    public String scrollDown = "window.scrollBy(0,350)";
+    public String firstRandomIdAtrribute;
+    public String secondRandomIdAtrribute;
+    public Boolean enableButtonIsEnable;
+    public String firstColorButtonClassAttribute;
+    public String secondColorButtonClassAttribute;
+    public Boolean visibleButtonIsVisible;
 
 }

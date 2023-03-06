@@ -25,7 +25,7 @@ public class DynamicProperties {
     public void beforeAllTests(){
         open("https://demoqa.com");
         elements.elementsButton.click();
-        executeJavaScript(elements.scrollDown);//Sayfa aşağı kaydırılır.
+        executeJavaScript(elements.scrollDown);
         elements.dynamicPropertiesButton.click();
     }
     @AfterClass
@@ -33,19 +33,19 @@ public class DynamicProperties {
         closeWebDriver();
     }
     @Test
-    public void test01() throws InterruptedException {
-        Thread.sleep(1000);
-        elements.firstRandomIdAttribute = $x("//p[contains(text(),'This text has random Id')]").getAttribute("id");
-        System.out.println("firstRandomIdAttribute: " + elements.firstRandomIdAttribute);
-        elements.firstRandomIdText = $(By.id(elements.firstRandomIdAttribute));
+    public void test01() {
+        elements.firstRandomIdAtrribute = $x("//p[contains(text(),'This text has random Id')]").getAttribute("id");
+        System.out.println("firstRandomIdAtrribute: " + elements.firstRandomIdAtrribute);
+        elements.firstRandomIdText = $(By.id(elements.firstRandomIdAtrribute));
         softAssert.assertTrue(elements.firstRandomIdText.isDisplayed());
         refresh();
-        Thread.sleep(1000);
-        elements.secondRandomIdAttribute = $x("//p[contains(text(),'This text has random Id')]").getAttribute("id");
-        System.out.println("secondRandomIdAttribute: " + elements.secondRandomIdAttribute);
-        elements.SecondRandomIdText = $(By.id(elements.secondRandomIdAttribute));
-        softAssert.assertTrue(elements.SecondRandomIdText.isDisplayed());
-        softAssert.assertNotEquals(elements.firstRandomIdAttribute, elements.secondRandomIdAttribute);
+        elements.secondRandomIdAtrribute = $x("//p[contains(text(),'This text has random Id')]").getAttribute("id");
+        System.out.println("secondRandomIdAtrribute: " + elements.secondRandomIdAtrribute);
+        elements.secondRandomIdText = $(By.id(elements.secondRandomIdAtrribute));
+        softAssert.assertTrue(elements.secondRandomIdText.isDisplayed());
+
+        softAssert.assertNotEquals(elements.firstRandomIdAtrribute, elements.secondRandomIdAtrribute);
+        System.out.println("ID Text Is Dynamic");
         softAssert.assertAll();
     }
     @Test
@@ -54,7 +54,7 @@ public class DynamicProperties {
         softAssert.assertFalse(elements.enableButtonIsEnable);
         System.out.println("STATE enableButtonIsEnable: " + elements.enableButtonIsEnable);
         while (elements.enableButtonIsEnable != true){
-            System.out.println("Enable Button Is Not Enable Wait For 5 Seconds");
+            System.out.println("Enable Button Is Not Enable, Wait For 5 Seconds");
             Thread.sleep(elements.milis);
             elements.enableButtonIsEnable = elements.enableButton.isEnabled();
         }
@@ -64,12 +64,13 @@ public class DynamicProperties {
     }
     @Test
     public void test03() throws InterruptedException {
-        elements.firstColorButtonAttribute = elements.colorButton.getAttribute("class");
-        System.out.println("firstColorButtonAttribute: " + elements.firstColorButtonAttribute);
+        elements.firstColorButtonClassAttribute = elements.colorButton.getAttribute("class");
+        System.out.println("firstColorButtonClassAttribute: " + elements.firstColorButtonClassAttribute);
         Thread.sleep(elements.milis);
-        elements.secondColorButtonAttribute = elements.colorButton.getAttribute("class");
-        System.out.println("secondColorButtonAttribute: " + elements.secondColorButtonAttribute);
-        softAssert.assertNotEquals(elements.firstRandomIdAttribute, elements.secondRandomIdAttribute);
+        elements.secondColorButtonClassAttribute = elements.colorButton.getAttribute("class");
+        System.out.println("secondColorButtonClassAttribute: " + elements.secondColorButtonClassAttribute);
+        softAssert.assertNotEquals(elements.firstColorButtonClassAttribute, elements.secondColorButtonClassAttribute);
+        System.out.println("Color Changed");
         softAssert.assertAll();
     }
     @Test
@@ -77,7 +78,7 @@ public class DynamicProperties {
         Thread.sleep(elements.milis);
         elements.visibleButtonIsVisible = elements.visibleButton.isDisplayed();
         softAssert.assertTrue(elements.visibleButtonIsVisible);
-        System.out.println("Visible Button Is Visible, NOW | " + elements.visibleButtonIsVisible);
+        System.out.println("Visible Button ıs Visible, NOW | " + elements.visibleButtonIsVisible);
         softAssert.assertAll();
     }
 
