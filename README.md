@@ -18,7 +18,7 @@ https://github.com/MelihDemirtel/LinkedinOtomasyonAqua.git
 ```
 
 ## Nasıl Kullanılır?
-1. Testleri çalıştırmak: ***LinkedinProjectsAqua/src/test/java/elementsExamples/*** dizininde yer alan paketlerin içlerindeki java dosyalarını run edebilirsiniz.
+1. Testleri çalıştırmak: ***LinkedinProjectsAqua/src/test/java/*** dizininde yer alan paketlerin içlerindeki java dosyalarını run edebilirsiniz.
 
 ## Senaryolar
 Bu projede [Demoqa-Elements](https://demoqa.com/elements) web sayfasında yer alan senaryolar yer almaktadır:
